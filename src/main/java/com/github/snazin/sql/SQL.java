@@ -55,11 +55,12 @@ public class SQL {
         return appendLine("and " + condition);
     }
 
-    public SQL is(Object value) {
-        if (value instanceof String) {
-            value = "'" + value + "'";
-        }
+    public SQL is(Number value) {
         return append(" = " + value);
+    }
+
+    public SQL is(String value) {
+        return append(" = '" + value + "'");
     }
 
     public SQL like(String value) {
