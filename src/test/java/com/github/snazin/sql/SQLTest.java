@@ -60,4 +60,58 @@ public class SQLTest {
                 "from user u, address a";
         assertThatQueryIsExpected();
     }
+
+    @Test
+    public void selectWhere() {
+        query = create()
+                .selectAll()
+                .from("user")
+                .where("user.id = 1");
+        expected = "" +
+                "select * \n" +
+                "from user \n" +
+                "where user.id = 1";
+        assertThatQueryIsExpected();
+    }
+
+    @Test
+    public void selectWhereMultiple() {
+        query = create()
+                .selectAll()
+                .from("user")
+                .where("user.id = 1", "user.name = 'John'");
+        expected = "" +
+                "select * \n" +
+                "from user \n" +
+                "where user.id = 1 \n" +
+                "and user.name = 'John'";
+        assertThatQueryIsExpected();
+    }
+
+    @Test
+    public void selectWhereAnd() {
+        query = create()
+                .selectAll()
+                .from("user")
+                .where("user.id = 1").and("user.name = 'John'");
+        expected = "" +
+                "select * \n" +
+                "from user \n" +
+                "where user.id = 1 \n" +
+                "and user.name = 'John'";
+        assertThatQueryIsExpected();
+    }
+
+    @Test
+    public void selectWhereIs() {
+        query = create()
+                .selectAll()
+                .from("user")
+                .where("user.id").is(1);
+        expected = "" +
+                "select * \n" +
+                "from user \n" +
+                "where user.id = 1";
+        assertThatQueryIsExpected();
+    }
 }
