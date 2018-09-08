@@ -27,6 +27,13 @@ public class SQLTest {
     }
 
     @Test
+    public void selectAll() {
+        query = create().selectAll();
+        expected = "select *";
+        assertThatQueryIsExpected();
+    }
+
+    @Test
     public void selectMultiple() {
         query = create().select("name", "address", "phone");
         expected = "select name, address, phone";

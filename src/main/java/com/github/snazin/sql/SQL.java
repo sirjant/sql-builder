@@ -27,6 +27,12 @@ public class SQL {
         return new SQL(query);
     }
 
+
+    public SQL selectAll() {
+        query = "select *";
+        return new SQL(query);
+    }
+
     public SQL from(String... tables) {
         query = query + " \nfrom " + join(tables, ", ");
         return new SQL(query);
