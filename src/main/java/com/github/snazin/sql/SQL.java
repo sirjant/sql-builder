@@ -25,11 +25,6 @@ public class SQL {
     }
 
 
-    private SQL newQuery(@Language("SQL") String query) {
-        this.query = query;
-        return this;
-    }
-
     private SQL append(@Language("SQL") String statement) {
         query = query + statement;
         return this;
@@ -39,12 +34,13 @@ public class SQL {
         return append(" \n" + statement);
     }
 
+
     public SQL select(String... fields) {
-        return newQuery("select " + join(fields, ", "));
+        return append("select " + join(fields, ", "));
     }
 
     public SQL selectAll() {
-        return newQuery("select *");
+        return append("select *");
     }
 
     public SQL from(String... tables) {
