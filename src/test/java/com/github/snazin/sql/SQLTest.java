@@ -73,4 +73,18 @@ public class SQLTest {
                 "where user.id = 1";
         assertThatQueryIsExpected();
     }
+
+    @Test
+    public void selectWhereMultiple() {
+        query = create()
+                .selectAll()
+                .from("user")
+                .where("user.id = 1", "user.name = 'John'");
+        expected = "" +
+                "select * \n" +
+                "from user \n" +
+                "where user.id = 1 \n" +
+                "and user.name = 'John'";
+        assertThatQueryIsExpected();
+    }
 }

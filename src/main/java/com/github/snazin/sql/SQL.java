@@ -48,8 +48,8 @@ public class SQL {
         return appendLine("from " + join(tables, ", "));
     }
 
-    public SQL where(String condition) {
-        return appendLine("where " + condition);
+    public SQL where(String... conditions) {
+        return appendLine("where " + join(conditions, " \nand "));
     }
 
     @Override
