@@ -62,6 +62,10 @@ public class SQL {
         return append(" = " + value);
     }
 
+    public SQL like(String value) {
+        return append(" like '%" + value + "%'");
+    }
+
     @Override
     public String toString() {
         return query;
