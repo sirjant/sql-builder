@@ -181,5 +181,19 @@ class SQLTest {
                     "where lower(user.name) like '%john%'";
             assertThatQueryIsExpected();
         }
+
+        @Test
+        @DisplayName("lower(field) like lower(value)")
+        void likeIgnoreCase() {
+            query = create()
+                    .selectAll()
+                    .from("user")
+                    .where().likeIgnoreCase("user.name", "John");
+            expected = "" +
+                    "select * \n" +
+                    "from user \n" +
+                    "where lower(user.name) like '%john%'";
+            assertThatQueryIsExpected();
+        }
     }
 }

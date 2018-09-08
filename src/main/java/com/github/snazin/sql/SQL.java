@@ -75,6 +75,10 @@ public class SQL {
         return append("lower(" + value + ")");
     }
 
+    public SQL likeIgnoreCase(String field, String value) {
+        return lower(field).like(value.toLowerCase());
+    }
+
     @Override
     public String toString() {
         return query;
