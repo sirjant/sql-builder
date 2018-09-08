@@ -52,6 +52,10 @@ public class SQL {
         return appendLine("where " + join(conditions, " \nand "));
     }
 
+    public SQL and(String condition) {
+        return appendLine("and " + condition);
+    }
+
     @Override
     public String toString() {
         return query;

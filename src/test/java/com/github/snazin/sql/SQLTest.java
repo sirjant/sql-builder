@@ -87,4 +87,18 @@ public class SQLTest {
                 "and user.name = 'John'";
         assertThatQueryIsExpected();
     }
+
+    @Test
+    public void selectWhereAnd() {
+        query = create()
+                .selectAll()
+                .from("user")
+                .where("user.id = 1").and("user.name = 'John'");
+        expected = "" +
+                "select * \n" +
+                "from user \n" +
+                "where user.id = 1 \n" +
+                "and user.name = 'John'";
+        assertThatQueryIsExpected();
+    }
 }
