@@ -25,12 +25,12 @@ public class SQL {
     }
 
 
-    private SQL append(@Language("SQL") String statement) {
+    public SQL append(@Language("SQL") String statement) {
         query = query + statement;
         return this;
     }
 
-    private SQL appendLine(@Language("SQL") String statement) {
+    public SQL appendLine(@Language("SQL") String statement) {
         return append(" \n" + statement);
     }
 
