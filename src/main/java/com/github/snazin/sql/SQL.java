@@ -11,6 +11,7 @@ public class SQL {
     @Language("SQL")
     private String query = "";
 
+
     public SQL() {
     }
 
@@ -18,8 +19,15 @@ public class SQL {
         this.query = query;
     }
 
+
     public static SQL create() {
         return new SQL();
+    }
+
+
+    private SQL add(@Language("SQL") String statement) {
+        query = query + statement;
+        return this;
     }
 
     public SQL select(String... fields) {
@@ -27,20 +35,17 @@ public class SQL {
         return this;
     }
 
-
     public SQL selectAll() {
         query = "select *";
         return this;
     }
 
     public SQL from(String... tables) {
-        query = query + " \nfrom " + join(tables, ", ");
-        return this;
+        return add(" \nfrom " + join(tables, ", "));
     }
 
     public SQL where(String condition) {
-        query = query + " \nwhere " + condition;
-        return this;
+        return add(" \nwhere " + condition);
     }
 
     @Override
