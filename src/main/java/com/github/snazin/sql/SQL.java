@@ -25,9 +25,13 @@ public class SQL {
     }
 
 
-    private SQL add(@Language("SQL") String statement) {
+    private SQL append(@Language("SQL") String statement) {
         query = query + statement;
         return this;
+    }
+
+    private SQL appendLine(@Language("SQL") String statement) {
+        return append(" \n" + statement);
     }
 
     public SQL select(String... fields) {
@@ -41,11 +45,11 @@ public class SQL {
     }
 
     public SQL from(String... tables) {
-        return add(" \nfrom " + join(tables, ", "));
+        return appendLine("from " + join(tables, ", "));
     }
 
     public SQL where(String condition) {
-        return add(" \nwhere " + condition);
+        return appendLine("where " + condition);
     }
 
     @Override
