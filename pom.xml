@@ -7,8 +7,9 @@
     <groupId>com.github.snazin</groupId>
     <artifactId>sql-builder</artifactId>
     <version>0.0.1.SNAPSHOT</version>
-    <dependencies>
+    <packaging>jar</packaging>
 
+    <dependencies>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
