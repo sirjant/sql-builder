@@ -51,6 +51,10 @@ public class SQL {
         return appendLine("where " + join(conditions, " \nand "));
     }
 
+    public SQL where() {
+        return where("");
+    }
+
     public SQL and(String condition) {
         return appendLine("and " + condition);
     }
@@ -65,6 +69,10 @@ public class SQL {
 
     public SQL like(String value) {
         return append(" like '%" + value + "%'");
+    }
+
+    public SQL lower(String value) {
+        return append("lower(" + value + ")");
     }
 
     @Override
