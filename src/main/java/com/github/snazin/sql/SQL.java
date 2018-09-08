@@ -59,6 +59,10 @@ public class SQL {
         return appendLine("and " + condition);
     }
 
+    public SQL is(Object value) {
+        return append(" = " + value);
+    }
+
     @Override
     public String toString() {
         return query;
