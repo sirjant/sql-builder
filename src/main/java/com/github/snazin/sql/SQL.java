@@ -24,23 +24,23 @@ public class SQL {
 
     public SQL select(String... fields) {
         query = "select " + join(fields, ", ");
-        return new SQL(query);
+        return this;
     }
 
 
     public SQL selectAll() {
         query = "select *";
-        return new SQL(query);
+        return this;
     }
 
     public SQL from(String... tables) {
         query = query + " \nfrom " + join(tables, ", ");
-        return new SQL(query);
+        return this;
     }
 
     public SQL where(String condition) {
         query = query + " \nwhere " + condition;
-        return new SQL(query);
+        return this;
     }
 
     @Override
