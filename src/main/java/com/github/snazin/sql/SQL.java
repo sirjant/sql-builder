@@ -25,26 +25,22 @@ public class SQL {
     }
 
 
-    private SQL newQuery(@Language("SQL") String query) {
-        this.query = query;
-        return this;
-    }
-
-    private SQL append(@Language("SQL") String statement) {
+    public SQL append(@Language("SQL") String statement) {
         query = query + statement;
         return this;
     }
 
-    private SQL appendLine(@Language("SQL") String statement) {
+    public SQL appendLine(@Language("SQL") String statement) {
         return append(" \n" + statement);
     }
 
+
     public SQL select(String... fields) {
-        return newQuery("select " + join(fields, ", "));
+        return append("select " + join(fields, ", "));
     }
 
     public SQL selectAll() {
-        return newQuery("select *");
+        return append("select *");
     }
 
     public SQL from(String... tables) {
@@ -55,12 +51,32 @@ public class SQL {
         return appendLine("where " + join(conditions, " \nand "));
     }
 
+    public SQL where() {
+        return where("");
+    }
+
     public SQL and(String condition) {
         return appendLine("and " + condition);
     }
 
-    public SQL is(Object value) {
+    public SQL is(Number value) {
         return append(" = " + value);
+    }
+
+    public SQL is(String value) {
+        return append(" = '" + value + "'");
+    }
+
+    public SQL like(String value) {
+        return append(" like '%" + value + "%'");
+    }
+
+    public SQL lower(String value) {
+        return append("lower(" + value + ")");
+    }
+
+    public SQL likeIgnoreCase(String field, String value) {
+        return lower(field).like(value.toLowerCase());
     }
 
     @Override
