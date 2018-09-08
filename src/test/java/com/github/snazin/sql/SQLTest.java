@@ -114,4 +114,17 @@ public class SQLTest {
                 "where user.id = 1";
         assertThatQueryIsExpected();
     }
+
+    @Test
+    public void selectWhereIsString() {
+        query = create()
+                .selectAll()
+                .from("user")
+                .where("user.name").is("John");
+        expected = "" +
+                "select * \n" +
+                "from user \n" +
+                "where user.name = 'John'";
+        assertThatQueryIsExpected();
+    }
 }

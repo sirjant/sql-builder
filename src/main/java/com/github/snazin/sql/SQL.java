@@ -60,6 +60,9 @@ public class SQL {
     }
 
     public SQL is(Object value) {
+        if (value instanceof String) {
+            value = "'" + value + "'";
+        }
         return append(" = " + value);
     }
 
