@@ -38,6 +38,11 @@ public class SQL {
         return new SQL(query);
     }
 
+    public SQL where(String condition) {
+        query = query + " \nwhere " + condition;
+        return new SQL(query);
+    }
+
     @Override
     public String toString() {
         return query;

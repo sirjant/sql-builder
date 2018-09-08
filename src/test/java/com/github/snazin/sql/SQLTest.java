@@ -60,4 +60,17 @@ public class SQLTest {
                 "from user u, address a";
         assertThatQueryIsExpected();
     }
+
+    @Test
+    public void selectWhere() {
+        query = create()
+                .selectAll()
+                .from("user")
+                .where("user.id = 1");
+        expected = "" +
+                "select * \n" +
+                "from user \n" +
+                "where user.id = 1";
+        assertThatQueryIsExpected();
+    }
 }
